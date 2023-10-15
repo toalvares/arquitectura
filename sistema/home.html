@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>AlertMed</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+     <nav class="navbar navbar-expand-lg bg-light navbar-light">
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <i class="fas fa-bars"></i>
+               <i class="bi bi-2-circle"></i>
+          </button>
+          <div class="container d-flex justify-content-center">
+               <div class="row">
+                    <div class="col-12 d-flex justify-content-center mb-3">
+                         <a class="navbar-brand" href="#">
+                              <img id="Logo" src="../img/icon.ico" alt="Logo" draggable="false" height="100" />
+                         </a>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav align-items-center mx-auto">
+
+                                   <li class="nav-item">
+                                        <a class="nav-link mx-2" href="#!"><i class="fas fa-bell pe-2"></i>{usuario}</a>
+                                   </li>
+                                   <li class="nav-item">
+                                        <a class="nav-link mx-2" href="cerrarSession.php"><i class="fas fa-bell pe-2"></i>Cerrar Sessión</a>
+                                   </li>
+                         
+                              </ul>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </nav>
+     <!-- Navbar -->
+     <section class="cuerpo-index">
+          <div class="container overflow">
+               <div class="row gx-lg-5">
+                    <div id="cards" class="col-lg col-11">
+                         <div class="titulo-cards">
+                              <h4>Listado Personal</h4>
+                              <button class="btnrefresh">
+                                   <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1" />
+                              </button>
+                         </div>
+                         <!-- Lista -->
+                         <div class="form-incidentes">
+
+                         <!-- BEGIN listaUsuarios -->     
+                         <div class="estado">
+                              <li>{lista_personal}</li>
+                              <img width="30" height="30" src="https://img.icons8.com/ios/50/iphone.png" alt="iphone"/>
+                              </div>
+                         <!-- END listaUsuarios --> 
+
+
+                         </div>
+                    </div>
+                    <div id="cards" class="col-lg col-11">
+                         <h4>Registrar accidente</h4>
+                         <div class="form-incidentes">
+                              <div class="mb-3">
+                                   <form id="miFormulario" method="post">
+                                        <label for="fecha" class="form-label">Fecha:</label>
+                                        <input type="date" class="form-control" name="fecha" id="fecha">
+                                        <label for="incidente" class="form-label">Incidente:</label>
+                                        <input type="text" class="form-control" name="incidente" id="incidente">
+                                        <label for="personas-afectadas" class="form-label">Personas afectadas:</label>
+                                        <input type="number" class="form-control" name="afectadas" id="personas-afectadas">
+                                        <label for="descripcion" class="form-label">Descripción:</label>
+                                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" id="btn_registro">
+                                             Confirmar registro
+                                        </button>
+                                   </form>
+                              </div>
+                         </div>
+                    </div>
+                    <div id="cards" class="col-lg col-11">
+                         <div class="titulo-cards">
+                              <h4>Equipo clave</h4>
+                              <button class="btnrefresh">
+                                   <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1" />
+                              </button>
+                         </div>
+                         <div class="equipo-clave">
+                              
+                         <!-- BEGIN listaEqClave -->     
+                              <div class="estado">
+                              <li>{datos_persona}</li>
+                              <img width="30" height="30" src="https://img.icons8.com/ios/50/iphone.png" alt="iphone"/>
+                              </div>
+                         <!-- END listaEqClave --> 
+
+                         </div>
+                         <br>
+                         <h4>Rastreo de respuestas</h4>
+                         <div class="rastreo-respuesta">
+
+                              <!-- BEGIN rastreoRespuesta -->
+                              <div class="estado">
+                                   <li>{rastreo_respuesta}</li>
+                                   <img src="../img/si.png" class="img">
+                              </div>
+                              <!-- END rastreoRespuesta -->
+                              
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+     <div class="modal" id="myModal">
+          <div class="modal-dialog">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h4 class="modal-title">Vista Previa de la Alerta</h4>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                    </div>
+
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Enviar Alerta</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <script src="../js/validaciones.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+body {
+  overflow-y: hidden;
+  
+
+}
+
+@media (max-width: 999px) {
+  body {
+    overflow-y: scroll;
+  }
+}
+
+/* Home */
+
+.cuerpo-index {
+  display: flex;
+  min-height: 100vh;
+  background-color: #eeeff4;
+  padding-top: 50px;
+}
+
+
+#cards {
+  background-color: #ffffff;
+  height: 60vh;
+  margin: 10px;
+  box-shadow: 0px 0px 10px 0px #bbbbbb;
+  border-radius: 10px;
+  padding: 30px;
+  overflow-y: auto;
+  .img{
+    width: 30px;
+  }
+}
+
+.estado{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.estado li{
+  list-style-type: none;
+  min-width: 248px;
+}
+
+.navbar-light,
+.navbar-nav,
+.nav-link {
+  color: #000;
+}
+
+#Logo {
+  mix-blend-mode: multiply;
+  filter: brightness(1.1);
+}
+
+ol {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+.lista-personal,
+.equipo-clave,
+.form-incidentes {
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+
+
+#btn_registro{
+     width: 100%;
+}
+
+.title-login{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  top: 0;
+}
+
+.titulo-cards{
+  display: flex;
+  text-align: center;
+  min-width: 248px;
+  justify-content: space-evenly;
+}
+h4{
+  text-align: center;
+}
+
+.btnrefresh{
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 30;
+}
+.btnrefresh:hover{
+  background-color: #e9ecef;
+  border-radius: 50%;
+}
+
+/* Home */
+
+/* Login */
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('/AlertMed/img/fondo.page1.jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.login-box{
+  display: flex;
+  color: black;
+  flex-direction: column;
+  text-align: start;
+  align-items: center;
+}
+
+.form-login{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 380px;
+  height: 450px;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px #bbbbbb;  
+}
+
+
+#alert{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo-login{
+  width: 30px;
+}
+/* Login */
+
