@@ -21,7 +21,7 @@ else
               $usuario=$_POST["rut"];
               $clave=$_POST["clave"];
               $claveMd5=MD5($clave);
-              $sql = mysqli_query($conn,"SELECT * FROM usuario WHERE usuario='$usuario' AND clave='$claveMd5'");
+              $sql = mysqli_query($conn,"SELECT * FROM usuario_categorizador WHERE usuario='$usuario' AND clave='$claveMd5'");
 
      
               if (mysqli_affected_rows($conn) > 0) 
@@ -35,11 +35,10 @@ else
               {
                   session_destroy();
                    $t->set_var(array(
-                    "mensajeError"=>'<div class="alert alert-danger">Rut no existe en el sistema</div>',
+                    "mensajeError"=>'<div class="alert alert-danger">Rut o contraseña no existe en el sistema</div>',
                     "usuario"=>"no existe"
-     
-                   ));
-     
+
+                   ));     
               }
          }
      }

@@ -10,6 +10,22 @@ $t->set_block("Salida","listaUsuarios","listaUsuariosT");
 $t->set_block("Salida","rastreoRespuesta","rastreoRespuestaT");
 
 session_start();
+
+
+if(isset($_POST["grabar"])){
+
+     $fecha = $_POST["fecha"];
+     $incidente = $_POST["incidente"];
+     $afectadas = $_POST["afectadas"];
+     $descripcion = $_POST["descripcion"];
+     $nueva_fecha = date("Y-m-d", strtotime($fecha));
+
+     $query = "INSERT INTO registro_accidente (fecha, incidente, personas_afectadas, descripcion) 
+     VALUES ('$nueva_fecha' , '$incidente', '$afectadas', '$descripcion')";
+
+     $sql = mysqli_query($conn, $query);
+}	
+
 if(isset($_SESSION["usuario"]))
 {
      $t->set_var(array("usuario"=>$_SESSION["usuario"],
@@ -40,6 +56,13 @@ if(isset($_SESSION["usuario"]))
           $t->parse("rastreoRespuestaT","rastreoRespuesta",true);
      }
 
+     // if(isset($_POST["datos_form"])){
+
+     //      $query = "INSERT INTO registro_accidente (id_alerta, fecha, incidente, personas_afectadas, descripcion) 
+     //      VALUES (NULL, '2023-10-17', 'dsadasdas', '1', '1')";
+
+     //      $sql = mysqli_query($conn, $query);
+     // }
 
 }
 else

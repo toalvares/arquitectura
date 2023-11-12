@@ -1,13 +1,12 @@
-function validarFormulario() 
-{
+function validarFormulario() {
   //evento.preventDefault();
   var rut = document.getElementById('rut').value;
-  var alerta = document.getElementById("alert"); 
-  if(Fn.validaRut(rut) == false) {
+  var alerta = document.getElementById("alert");
+  if (Fn.validaRut(rut) == false) {
     // alert('No has escrito nada en el campo rut');
     alerta.innerHTML = `<div class="alert alert-danger"> Rut ingresado no valido </div>`;
     return false;
-  }else{
+  } else {
     alerta.innerHTML = '';
   }
   var clave = document.getElementById('clave').value;
@@ -23,26 +22,26 @@ function validarFormulario()
 
 var Fn = {
   // Valida el rut con su cadena completa "XXXXXXXX-X"
-  validaRut : function (rutCompleto) {
-    rutCompleto = rutCompleto.replace("‐","-");
+  validaRut: function (rutCompleto) {
+    rutCompleto = rutCompleto.replace("‐", "-");
     if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rutCompleto))
-    return false;
-    var tmp 	= rutCompleto.split('-');
-    var digv	= tmp[1]; 
-    var rut 	= tmp[0];
-    if ( digv == 'K' ) digv = 'k' ;
-    
-    return (Fn.dv(rut) == digv );
+      return false;
+    var tmp = rutCompleto.split('-');
+    var digv = tmp[1];
+    var rut = tmp[0];
+    if (digv == 'K') digv = 'k';
+
+    return (Fn.dv(rut) == digv);
   },
-  dv : function(T){
-    var M=0,S=1;
-    for(;T;T=Math.floor(T/10))
-      S=(S+T%10*(9-M++%6))%11;
-    return S?S-1:'k';
+  dv: function (T) {
+    var M = 0, S = 1;
+    for (; T; T = Math.floor(T / 10))
+      S = (S + T % 10 * (9 - M++ % 6)) % 11;
+    return S ? S - 1 : 'k';
   }
 };
 
-let refresh  = document.querySelectorAll('.btnrefresh');
+let refresh = document.querySelectorAll('.btnrefresh');
 
 refresh.forEach(button => {
   button.addEventListener('click', () => {
@@ -50,36 +49,27 @@ refresh.forEach(button => {
   });
 });
 
+document.getElementById("btn_registro").addEventListener("click", function () {
 
-document.addEventListener("DOMContentLoaded", function() {
-  var formulario = document.getElementById("miFormulario");
-  
-  formulario.addEventListener("submit", function(event) {
-      event.preventDefault(); // Evita la redirección
+  var modalBody = document.querySelector("#myModal .modal-body");
+  if(fecha.value == '' || incidente.value == '' || personasAfectadas.value == '' || descripcion.value == '') {
+    event.preventDefault();
+    alert('Debe llenar todos los campos');
+    return false;
+}
+var fecha = document.getElementById('fecha').value;
+var incidente = document.getElementById('incidente').value;
+var personasAfectadas = document.getElementById('personas_afectadas').value;
+var descripcion = document.getElementById('descripcion').value;
+  var datos = `
+  <p>Fecha: ${fecha}</p>
+  <p>Incidente: ${incidente}</p>
+  <p>Personas Afectadas: ${personasAfectadas}</p>
+  <p>Descripción: ${descripcion}</p>
+`;
 
-      // Obtén los datos del formulario
-      var formData = new FormData(this);
+  modalBody.innerHTML = datos;
 
-      // Crea una nueva solicitud XMLHttpRequest
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "../sistema/controlador.php", true);
+})
 
-      // Configura el evento "load" para manejar la respuesta
-      xhr.onload = function() {
-          if (xhr.status === 200) {
-              // Muestra la respuesta en el modal
-              var modalBody = document.querySelector("#myModal .modal-body");
-              modalBody.innerHTML = xhr.responseText;
 
-              // Abre el modal
-              var modal = new bootstrap.Modal(document.getElementById("myModal"));
-              modal.show();
-
-          }
-      };
-      // Envía los datos del formulario
-      xhr.send(formData);
-      modal.dispose();
-
-  });
-});
